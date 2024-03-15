@@ -1,9 +1,9 @@
+import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Component } from "react";
 
-class TrendingNow extends Component {
+class NewReleases extends Component {
   state = {
     movies: [],
     isLoading: true,
@@ -11,7 +11,7 @@ class TrendingNow extends Component {
   };
 
   componentDidMount() {
-    fetch("http://www.omdbapi.com/?apikey=a73390c1&s=")
+    fetch(`http://www.omdbapi.com/?apikey=a73390c1&s=${this.props.searchSaga}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -39,7 +39,7 @@ class TrendingNow extends Component {
 
     return (
       <Container>
-        <h4>New Releases</h4>
+        <h4>{this.props.searchSaga}</h4>
         <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4">
           {movies.map((movie, movieIndex) => (
             <Col key={movieIndex} className="mb-2 text-center px-1">
@@ -52,4 +52,4 @@ class TrendingNow extends Component {
   }
 }
 
-export default TrendingNow;
+export default NewReleases;

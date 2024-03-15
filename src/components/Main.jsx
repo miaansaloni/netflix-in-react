@@ -5,9 +5,9 @@ import NewReleases from "./NewReleases";
 function Main() {
   return (
     <Container>
-      <TrendingNow />
-      <WatchItAgain />
-      <NewReleases />
+      <TrendingNow searchSaga="Star Wars" />
+      <WatchItAgain searchSaga="The Lord Of The Rings" />
+      <NewReleases searchSaga="Harry Potter" />
     </Container>
   );
 }
