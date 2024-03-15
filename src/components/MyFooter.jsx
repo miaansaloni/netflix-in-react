@@ -2,6 +2,10 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Facebook } from "react-bootstrap-icons";
+import { Instagram } from "react-bootstrap-icons";
+import { TwitterX } from "react-bootstrap-icons";
+import { Youtube } from "react-bootstrap-icons";
 
 function Footer() {
   return (
@@ -11,10 +15,10 @@ function Footer() {
           <Col md={6}>
             <Row>
               <Col className="mb-2">
-                <i className="bi bi-facebook footer-icon me-2"></i>
-                <i className="bi bi-instagram footer-icon me-2"></i>
-                <i className="bi bi-twitter-x footer-icon me-2"></i>
-                <i className="bi bi-youtube footer-icon"></i>
+                <Facebook className="me-2 footer-icon" />
+                <Instagram className="me-2 footer-icon" />
+                <TwitterX className="me-2 footer-icon" />
+                <Youtube className="me-2 footer-icon" />
               </Col>
             </Row>
             <Row className="row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4">
@@ -110,7 +114,7 @@ function Footer() {
             </Row>
             <Row>
               <Col className="mb-2">
-                <Button variant="dark" size="sm" className="footer-button rounded-0 mt-3">
+                <Button variant="dark" size="sm" className="btn footer-button rounded-0 mt-3 bg-transparent">
                   Service Code
                 </Button>
               </Col>
