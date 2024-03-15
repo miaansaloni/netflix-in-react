@@ -4,9 +4,9 @@ import WatchItAgain from "./WatchItAgain";
 import NewReleases from "./NewReleases";
 function Main() {
   return (
-    <Container>
+    <Container fluid>
       <TrendingNow searchSaga="Star Wars" />
-      <WatchItAgain searchSaga="The Lord Of The Rings" />
+      <WatchItAgain searchSaga="James Bond" />
       <NewReleases searchSaga="Harry Potter" />
     </Container>
   );

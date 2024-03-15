@@ -52,10 +52,10 @@ footer {
   font-size: 0.6em;
 }
 
-.col img {
+#imgcontainer {
   transition: transform 0.2s;
 }
 
-.col img:hover {
+#imgcontainer:hover {
   transform: scale(1.06);
 }

@@ -38,12 +38,14 @@ class TrendingNow extends Component {
     }
 
     return (
-      <Container>
+      <Container fluid>
         <h4>{this.props.searchSaga}</h4>
-        <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4">
+        <Row className="g-1 mb-4">
           {movies.map((movie, movieIndex) => (
-            <Col key={movieIndex} className="mb-2 text-center px-1">
-              <img className="img-fluid" src={movie.Poster} alt={movie.Title} />
+            <Col key={movieIndex} className="col-12 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-2 text-center px-1">
+              <div id="imgcontainer">
+                <img className="img-fluid" src={movie.Poster} alt={movie.Title} />
+              </div>
             </Col>
           ))}
         </Row>
