@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Component } from "react";
 
-class TrendingNow extends Component {
+class MovieList extends Component {
   state = {
     movies: [],
     isLoading: true,
@@ -54,4 +54,4 @@ class TrendingNow extends Component {
   }
 }
 
-export default TrendingNow;
+export default MovieList;

@@ -28,8 +28,12 @@ function TVShows() {
           </div>
         </div>
         <div>
-          <Grid className="mx-2 icon" />
-          <Grid3x3Gap className="mx-2 icon" />
+          <a href="#link">
+            <Grid className="mx-2 icon" />
+          </a>
+          <a href="#link">
+            <Grid3x3Gap className="mx-2 icon" />
+          </a>
         </div>
       </div>
     </Container>
