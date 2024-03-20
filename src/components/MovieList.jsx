@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
+import { Link } from "react-router-dom";
 
 const MovieList = (props) => {
   // state = {
@@ -60,7 +61,9 @@ const MovieList = (props) => {
         {movies.map((movie, movieIndex) => (
           <Col key={movieIndex} className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-2 text-center px-2">
             <div id="imgcontainer">
-              <img className="img-fluid" src={movie.Poster} alt={movie.Title} />
+              <Link to={"/details/" + movie.imdbID}>
+                <img className="img-fluid" src={movie.Poster} alt={movie.Title} />
+              </Link>
             </div>
           </Col>
         ))}
