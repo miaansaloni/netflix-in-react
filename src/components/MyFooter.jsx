@@ -6,6 +6,7 @@ import { Facebook } from "react-bootstrap-icons";
 import { Instagram } from "react-bootstrap-icons";
 import { TwitterX } from "react-bootstrap-icons";
 import { Youtube } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -26,24 +27,16 @@ function Footer() {
                 <Row>
                   <Col className="footer-links">
                     <p>
-                      <a href="#link" alt="footer link">
-                        Audio and Subtitles
-                      </a>
+                      <Link alt="footer link">Audio and Subtitles</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Media Center
-                      </a>
+                      <Link alt="footer link">Media Center</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Privacy
-                      </a>
+                      <Link alt="footer link">Privacy</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Contact us
-                      </a>
+                      <Link alt="footer link">Contact us</Link>
                     </p>
                   </Col>
                 </Row>
@@ -52,19 +45,13 @@ function Footer() {
                 <Row>
                   <Col className="footer-links">
                     <p>
-                      <a href="#link" alt="footer link">
-                        Audio Description
-                      </a>
+                      <Link alt="footer link">Audio Description</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Investor Relations
-                      </a>
+                      <Link alt="footer link">Investor Relations</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Legal Notices
-                      </a>
+                      <Link alt="footer link">Legal Notices</Link>
                     </p>
                   </Col>
                 </Row>
@@ -73,19 +60,13 @@ function Footer() {
                 <Row>
                   <Col className="footer-links">
                     <p>
-                      <a href="#link" alt="footer link">
-                        Help Center
-                      </a>
+                      <Link alt="footer link">Help Center</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Jobs
-                      </a>
+                      <Link alt="footer link">Jobs</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Cookie Preferences
-                      </a>
+                      <Link alt="footer link">Cookie Preferences</Link>
                     </p>
                   </Col>
                 </Row>
@@ -94,19 +75,13 @@ function Footer() {
                 <Row>
                   <Col className="footer-links">
                     <p>
-                      <a href="#link" alt="footer link">
-                        Gift Cards
-                      </a>
+                      <Link alt="footer link">Gift Cards</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Terms of Use
-                      </a>
+                      <Link alt="footer link">Terms of Use</Link>
                     </p>
                     <p>
-                      <a href="#link" alt="footer link">
-                        Corporate Information
-                      </a>
+                      <Link alt="footer link">Corporate Information</Link>
                     </p>
                   </Col>
                 </Row>

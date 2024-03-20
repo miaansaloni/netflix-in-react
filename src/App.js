@@ -5,6 +5,7 @@ import TVShows from "./components/TvShows";
 import Footer from "./components/MyFooter";
 import Main from "./components/Main";
 import MovieDetails from "./components/MovieDetails";
+import NotFound from "./components/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/home" element={<Main />} />
           <Route path="/tvshows" element={<TVShows />} />
           <Route path="/details/:movieId" element={<MovieDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>

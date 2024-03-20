@@ -4,8 +4,9 @@ import Spinner from "react-bootstrap/Spinner";
 import { useParams, useNavigate } from "react-router-dom";
 
 const MovieDetails = function () {
-  const [movie, setmovie] = useState(null);
+  const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [comments, setComments] = useState([]);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -17,15 +18,26 @@ const MovieDetails = function () {
         if (!response.ok) {
           throw new Error("Response was not ok.");
         }
-        const data = await response.json();
-        setmovie(data);
+        const movieData = await response.json();
+        setMovie(movieData);
+        const commentsResponse = await fetch(`https://striveschool-api.herokuapp.com/api/comments/` + params.imdbID, {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZiMDM5ODcxNzQ3YjAwMWExYjAzMjIiLCJpYXQiOjE3MTA5NDkyNzIsImV4cCI6MTcxMjE1ODg3Mn0.L6UQmdjlfF8O9mWZrheBtlGywgpODbYNPNY58nIweuo",
+          },
+        });
+        if (!commentsResponse.ok) {
+          throw new Error("Unable to fetch comments.");
+        }
+        const commentsData = await commentsResponse.json();
+        setComments(commentsData);
       } catch (error) {
-        // navigate("/notfound");
+        navigate("/notfound");
       }
     };
 
     fetchMovieDetails();
-  }, [params.imdbID]);
+  }, [params.imdbID, navigate]);
 
   if (isLoading) {
     return <Spinner animation="border"></Spinner>;
@@ -49,6 +61,14 @@ const MovieDetails = function () {
           </Card.Body>
         </Card>
       )}
+      <div>
+        <h3>Comments:</h3>
+        <ul>
+          {comments.map((comment, i) => (
+            <li key={i}>{comment.comment}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
