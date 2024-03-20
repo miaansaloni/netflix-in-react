@@ -1,17 +1,24 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Component } from "react";
+// import { Component } from "react";
+import React, { useState, useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
+import Alert from "react-bootstrap/Alert";
 
-class MovieList extends Component {
-  state = {
-    movies: [],
-    isLoading: true,
-    isError: false,
-  };
+const MovieList = (props) => {
+  // state = {
+  //   movies: [],
+  //   isLoading: true,
+  //   isError: false,
+  // };
 
-  componentDidMount() {
-    fetch(`http://www.omdbapi.com/?apikey=a73390c1&s=${this.props.searchSaga}`)
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    fetch(`http://www.omdbapi.com/?apikey=a73390c1&s=` + props.searchSaga)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -21,37 +28,45 @@ class MovieList extends Component {
       .then((data) => {
         if (data && data.Search) {
           const movies = data.Search.slice(0, 6);
-          this.setState({ movies });
+          setMovies(movies);
+          setIsLoading(false);
         }
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
-        this.setState({ isError: true });
+        setIsLoading(false);
+        setIsError(true);
       });
+  }, [props.searchSaga]);
+
+  if (isError) {
+    return <div>Error: {isError}</div>;
   }
 
-  render() {
-    const { movies, isError } = this.state;
-
-    if (isError) {
-      return <div>Error: {isError}</div>;
-    }
-
-    return (
-      <Container fluid>
-        <h4>{this.props.searchSaga}</h4>
-        <Row className="g-1 mb-4">
-          {movies.map((movie, movieIndex) => (
-            <Col key={movieIndex} className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-2 text-center px-2">
-              <div id="imgcontainer">
-                <img className="img-fluid" src={movie.Poster} alt={movie.Title} />
-              </div>
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container fluid>
+      {isLoading === true && (
+        <div>
+          <Spinner animation="border" />
+        </div>
+      )}
+      {isError === true && (
+        <div>
+          <Alert variant="danger">Something went wrong</Alert>
+        </div>
+      )}
+      <h4>{props.searchSaga}</h4>
+      <Row className="g-1 mb-4">
+        {movies.map((movie, movieIndex) => (
+          <Col key={movieIndex} className="col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2 mb-2 text-center px-2">
+            <div id="imgcontainer">
+              <img className="img-fluid" src={movie.Poster} alt={movie.Title} />
+            </div>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+};
 
 export default MovieList;
