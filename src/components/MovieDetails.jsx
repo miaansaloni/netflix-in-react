@@ -14,13 +14,13 @@ const MovieDetails = function () {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=a73390c1&i=` + params.imdbID);
+        const response = await fetch(`http://www.omdbapi.com/?apikey=a73390c1&i=` + params.movieId);
         if (!response.ok) {
           throw new Error("Response was not ok.");
         }
         const movieData = await response.json();
         setMovie(movieData);
-        const commentsResponse = await fetch(`https://striveschool-api.herokuapp.com/api/comments/` + params.imdbID, {
+        const commentsResponse = await fetch(`https://striveschool-api.herokuapp.com/api/comments/` + params.movieId, {
           headers: {
             Authorization:
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZiMDM5ODcxNzQ3YjAwMWExYjAzMjIiLCJpYXQiOjE3MTA5NDkyNzIsImV4cCI6MTcxMjE1ODg3Mn0.L6UQmdjlfF8O9mWZrheBtlGywgpODbYNPNY58nIweuo",
@@ -37,11 +37,11 @@ const MovieDetails = function () {
     };
 
     fetchMovieDetails();
-  }, [params.imdbID, navigate]);
+  }, [params.movieId, navigate]);
 
-  if (isLoading) {
-    return <Spinner animation="border"></Spinner>;
-  }
+  // if (isLoading) {
+  //   return <Spinner animation="border"></Spinner>;
+  // }
 
   return (
     <div>
@@ -58,17 +58,19 @@ const MovieDetails = function () {
             <Card.Text>{movie.Plot}</Card.Text>
             <Card.Text>Released in: {movie.Released}</Card.Text>
             <Card.Text>Genre: {movie.Genre}</Card.Text>
+            <Card.Title>Comments</Card.Title>
+            <Card.Text>
+              <div>
+                <ul>
+                  {comments.map((comment, i) => (
+                    <li key={i}>{comment.comment}</li>
+                  ))}
+                </ul>
+              </div>
+            </Card.Text>
           </Card.Body>
         </Card>
       )}
-      <div>
-        <h3>Comments:</h3>
-        <ul>
-          {comments.map((comment, i) => (
-            <li key={i}>{comment.comment}</li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };
